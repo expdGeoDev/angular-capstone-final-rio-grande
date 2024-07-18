@@ -41,7 +41,9 @@
 		<div>{{count}}</div>
 		<div style="margin: auto 0;">
 			<div style="display: flex; justify-content: space-between; align-items: center; flex-direction:row; width: 280px">
-				<button style="background-color: transparent; height: 35px; width: 135px; border-radius: 7px; border: 1px solid;"><a href="/add-update-form">New Coffee</a></button>
+				<button style="background-color: transparent; height: 35px; width: 135px; border-radius: 7px; border: 1px solid;">
+					<a id="add-coffee-button" uiSref="add-update-form">New Coffee</a>
+				</button>
 				<div>
 					<select id="sort" [(ngModel)]="selectedOption" (change)="onSortChange()" style="background-color: transparent; height: 35px; width: 135px; border-radius: 7px">
 						<option value="" disabled selected>Sort By</option>
@@ -68,7 +70,9 @@
 						<div style="text-transform: capitalize;">{{ item.active }}</div>
 						<div>{{ item.id }} Oz.</div>
 						<div style="display: flex; justify-content: space-between; align-items: center; flex-direction:row; border-top: 1px solid black; margin-top: 10px;" >
-							<button (click)="clickEdit(item.id)" 		style="margin-top:15px;"><a href="/coffees/{{item.id}}">Edit</a></button>
+							<button style="margin-top:15px;">
+							  <a id="edit-coffee-button" uiSref="add-update-form" [uiParams]="{ coffeeId: item.id}">Edit</a>
+							</button>
 							<button (click)="clickView(item.id)" 		style="margin-top:15px;"><a href="/coffees/{{item.id}}">View</a></button>
 							<button
 								(click)="clickDelete(item.id)"

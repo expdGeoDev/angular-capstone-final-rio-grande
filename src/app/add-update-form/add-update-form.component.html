@@ -1,21 +1,29 @@
-<div id="form-wrapper">
-	<h1>{{pageTitle}} Coffee Form</h1>
+<div class="form-wrapper">
+	<h1 class="page-title m-4">{{pageTitle}} Coffee Form</h1>
 
-	<div class="container">
+	<div class="container form-container">
 		<div class="col-md">
 			<form id="coffeeForm" [formGroup]="coffeeForm" (ngSubmit)="submitForm()">
-				<div class="row">
-					<div class="col">
+				<div class="row mb-4 ps-4 pe-4">
+					<div class="col d-flex flex-column">
 						<label for="roasterInput">Roaster: </label>
 						<input id="roasterInput" type="text" formControlName="roasterControl"/>
 					</div>
-					<div class="col">
+
+				</div>
+				<div class="row mb-4 ps-4 pe-4">
+					<div class="col d-flex flex-column">
 						<label for="varietyInput">Variety: </label>
 						<input id="varietyInput" type="text" formControlName="varietyControl"/>
 					</div>
+
+					<div class="col-4 d-flex flex-column">
+						<label for="originInput">Origin: </label>
+						<input type="text" id="originInput" formControlName="originControl">
+					</div>
 				</div>
 
-				<div class="row">
+				<div class="row mb-4 ps-4 pe-4">
 					<div class="col-4">
 						<label for="sizeInput">Size: </label>
 						<select id="sizeInput" formControlName="sizeControl">
@@ -39,11 +47,15 @@
 							<option value="espresso">Espresso</option>
 						</select>
 					</div>
+
+					<div class="col-4 d-flex">
+						<label for="grindInput" class="numeric">Grind: </label>
+						<input type="number" max="7" id="grindInput" formControlName="grindControl">
+					</div>
 				</div>
 
-				<div class="row">
-					<div class="col">
-						<p>Format: </p>
+				<div class="row mb-4 justify-content-evenly">
+					<div class="col-4">
 						<label for="format-k-pod">K-Pod</label>
 						<input type="radio" id="format-k-pod" name="formatControl" value="k-pod" formControlName="formatControl">
 						<label for="format-beans">Beans</label>
@@ -51,17 +63,7 @@
 						<label for="format-ground">Ground</label>
 						<input type="radio" id="format-ground" name="formatControl" value="ground" formControlName="formatControl">
 					</div>
-				</div>
 
-				<div class="row">
-					<div class="col-4">
-						<label for="grindInput">Grind: </label>
-						<input type="number" id="grindInput" formControlName="grindControl">
-					</div>
-					<div class="col-4">
-						<label for="originInput">Origin: </label>
-						<input type="text" id="originInput" formControlName="originControl">
-					</div>
 					<div class="col-4">
 						<label for="singleOriginInput">Single Origin: </label>
 						<input type="checkbox" id="singleOriginInput" name="singleOriginInput" value="singleOrigin"
@@ -69,13 +71,17 @@
 					</div>
 				</div>
 
-				<div class="row">
+				<div class="row mb-4 ps-4 pe-4">
+					<div class="col-6 d-flex flex-column">
 					<label for="tastingNotesInput">Tasting Notes: </label>
 					<input type="text" id="tastingNotesInput" formControlName="tastingNotesControl">
+						</div>
 				</div>
 
-				<div class="row">
-					<button type="submit" [disabled]="!coffeeForm.valid">Submit</button>
+				<div class="row justify-content-start ps-4 mb-4">
+					<div class="col-2">
+						<button type="submit" [disabled]="!coffeeForm.valid">Submit</button>
+					</div>
 				</div>
 			</form>
 		</div>

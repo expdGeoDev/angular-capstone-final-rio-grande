@@ -13,6 +13,7 @@ import { CoffeeHttpService } from '../coffee-http.service';
 import { Coffee } from '../../data/coffee-data';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { Observable } from 'rxjs';
+import {UIRouterModule} from "@uirouter/angular";
 
 // import { RouterModule, Routes } from '@angular/router';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -28,6 +29,7 @@ import { Observable } from 'rxjs';
 		PopupComponent,
 		SearchBarComponent,
 		NgIf,
+		UIRouterModule,
 	],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
@@ -79,9 +81,6 @@ export class ListComponent implements OnInit {
 	}
 
 	clickView(id : any) {
-	}
-
-	clickEdit(id : any) {
 	}
 
 	clickDelete(cid : any) {

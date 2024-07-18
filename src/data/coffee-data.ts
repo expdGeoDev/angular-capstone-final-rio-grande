@@ -3,7 +3,7 @@ export type RoastType = 'blonde' | 'light' | 'medium' | 'medium-dark' | 'dark' |
 export type FormatType = 'k-pod' | 'beans' | 'ground'
 
 export interface Coffee {
-	id: number;
+	id: String;
 	active: boolean;
 	roaster: string;
 	variety: string | null;
@@ -13,6 +13,6 @@ export interface Coffee {
 	// If you want to limit the numeric values, look here: https://stackoverflow.com/a/39495173
 	grind?: number;
 	origin: string | null;
-	singleOrigin?: boolean;
+	singleOrigin: boolean;
 	tastingNotes: string | null;
 	}

@@ -1,1 +1,83 @@
-<p>Hello World!</p>
+<div id="form-wrapper">
+	<h1>{{pageTitle}} Coffee Form</h1>
+
+	<div class="container">
+		<div class="col-md">
+			<form id="coffeeForm" [formGroup]="coffeeForm" (ngSubmit)="submitForm()">
+				<div class="row">
+					<div class="col">
+						<label for="roasterInput">Roaster: </label>
+						<input id="roasterInput" type="text" formControlName="roasterControl"/>
+					</div>
+					<div class="col">
+						<label for="varietyInput">Variety: </label>
+						<input id="varietyInput" type="text" formControlName="varietyControl"/>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-4">
+						<label for="sizeInput">Size: </label>
+						<select id="sizeInput" formControlName="sizeControl">
+							<option value="8">8</option>
+							<option value="12">12</option>
+							<option value="14">14</option>
+							<option value="16">16</option>
+							<option value="20">20</option>
+							<option value="24">24</option>
+						</select>
+					</div>
+
+					<div class="col-4">
+						<label for="roastInput">Roast:</label>
+						<select id="roastInput" formControlName="roastControl">
+							<option value="blonde">Blonde</option>
+							<option value="light">Light</option>
+							<option value="medium">Medium</option>
+							<option value="medium-dark">Medium-Dark</option>
+							<option value="dark">Dark</option>
+							<option value="espresso">Espresso</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<p>Format: </p>
+						<label for="format-k-pod">K-Pod</label>
+						<input type="radio" id="format-k-pod" name="formatControl" value="k-pod" formControlName="formatControl">
+						<label for="format-beans">Beans</label>
+						<input type="radio" id="format-beans" name="formatControl" value="beans" formControlName="formatControl">
+						<label for="format-ground">Ground</label>
+						<input type="radio" id="format-ground" name="formatControl" value="ground" formControlName="formatControl">
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-4">
+						<label for="grindInput">Grind: </label>
+						<input type="number" id="grindInput" formControlName="grindControl">
+					</div>
+					<div class="col-4">
+						<label for="originInput">Origin: </label>
+						<input type="text" id="originInput" formControlName="originControl">
+					</div>
+					<div class="col-4">
+						<label for="singleOriginInput">Single Origin: </label>
+						<input type="checkbox" id="singleOriginInput" name="singleOriginInput" value="singleOrigin"
+									 formControlName="singleOriginControl">
+					</div>
+				</div>
+
+				<div class="row">
+					<label for="tastingNotesInput">Tasting Notes: </label>
+					<input type="text" id="tastingNotesInput" formControlName="tastingNotesControl">
+				</div>
+
+				<div class="row">
+					<button type="submit" [disabled]="!coffeeForm.valid">Submit</button>
+				</div>
+			</form>
+		</div>
+		</div>
+</div>

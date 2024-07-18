@@ -1,7 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { Coffee} from '../../data/coffee-data';
 import { SearchBarComponent } from './search-bar.component';
-import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { CoffeeHttpService } from '../coffee-http.service';
 

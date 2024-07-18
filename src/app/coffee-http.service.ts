@@ -14,7 +14,7 @@ export class CoffeeHttpService {
 		return this.client.get<Coffee[]>(`${this.baseUrl}/coffee`);
 	}
 
-	findBySearchString(search: string): Observable<Coffee[]> | undefined {
+	findBySearchString(search: string): Observable<Coffee[]>{
 		return this.client.get<Coffee[]>(`${this.baseUrl}/coffee?roaster_like=${search}|roast_like=${search}|variety_like=${search}|format_like=${search}|tastingNotes_like=${search}`);
 	}
 }

@@ -1,0 +1,27 @@
+.toolbar1 {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 65px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background: linear-gradient(120deg, rgb(255, 174, 145) 30%, coral 88%,
+	bisque 40%, rgb(255, 185, 160) 78%);
+	color: white;
+
+}
+
+.vertical-center {
+	margin: 0;
+	left: 25px;
+	position: absolute;
+	top: 50%;
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+	color: #464545;
+	/*font-family: Roboto, Arial, sans-serif;*/
+}
+
+

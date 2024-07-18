@@ -1,0 +1,298 @@
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	width: fit-content;
+	justify-content: center;
+	max-width: 50% ! important;
+	/*margin-top: 75px;*/
+	/*background-color: DodgerBlue;*/
+}
+
+.flex-container > .test {
+	width: 250px;
+	height: 220px;
+	margin: 10px;
+	/*text-align: center;*/
+	/*line-height: 75px;*/
+	/*font-size: 30px;*/
+	/*background-color: red;*/
+}
+
+input {
+	display: block;
+	padding: 0 0.5rem;
+	border: 0;
+}
+
+input,
+input::placeholder {
+	font: 1.25rem/2 sans-serif;
+	color: #424242;
+}
+
+/*.card {*/
+/*	width: 100%;*/
+/*	height: 100%;*/
+/*	background: #dcdada;*/
+/*	border: 0 ;*/
+/*	border-radius: 0;*/
+/*	!*transition: all 300ms;*!*/
+/*}*/
+
+/*.card:hover {*/
+/*	!*transform: scale(1.10);*!*/
+/*	border: 2px solid #FF7F50FF;*/
+/*}*/
+
+.card {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	background: rgba(217, 217, 217, 0.58);
+	border: 1px solid white;
+	/*box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);*/
+	backdrop-filter: blur(6px);
+	border-radius: 17px;
+	/*text-align: center;*/
+	cursor: pointer;
+	/*transition: all 0.5s;*/
+	/*display: flex;*/
+	/*align-items: center;*/
+	/*justify-content: center;*/
+	/*font-weight: bolder;*/
+	padding: 7px;
+	user-select: none;
+	color: black;
+}
+
+.card:hover {
+	border: 2px solid #FF7F50FF;
+	transform: scale(1);
+}
+
+/*.card:active {*/
+/*	transform: scale(0.95) rotateZ(1.7deg);*/
+/*}*/
+
+.textBox {
+	width: calc(100% - 5px);
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+.textContent {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	/*align-items: center;*/
+	/*justify-content: center;*/
+}
+
+
+.button {
+	width: 50px;
+	height: 50px;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(44, 44, 44);
+	border-radius: 50%;
+	cursor: pointer;
+	transition-duration: .3s;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13);
+	border: none;
+	background-color: whitesmoke;
+}
+
+.button:hover {
+	background-color: rgb(56, 56, 56);
+}
+
+.button:hover .bell {
+	animation: bellRing 0.9s both;
+}
+
+.button:active {
+	transform: scale(0.8);
+}
+
+
+.search {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+	width: 250px;
+	border-bottom: 1px solid;
+}
+
+.search__input {
+	font-family: inherit;
+	font-size: inherit;
+	background-color: transparent;
+	border: none;
+	color: #646464;
+	padding: 0.7rem 1rem;
+	border-radius: 0;
+	width: 12em;
+	transition: all ease-in-out .5s;
+	margin-right: -2rem;
+}
+
+/*.search__input:hover, .search__input:focus {*/
+/*	box-shadow: 0 0 1em #00000013;*/
+/*}*/
+
+.search__input:focus {
+	outline: none;
+	/*background-color: #f0eeee;*/
+}
+
+.search__input::-webkit-input-placeholder {
+	font-family: inherit;
+	font-weight: 100;
+	color: #9b9a9a;
+}
+
+/*.search__input:focus + .search__button {*/
+/*	background-color: #f0eeee;*/
+/*}*/
+
+.search__button {
+	border: none;
+	background-color: transparent;
+	margin-top: .1em;
+}
+
+.search__button:hover {
+	cursor: pointer;
+}
+
+.search__icon {
+	height: 1.3em;
+	width: 1.3em;
+	fill: #b4b4b4;
+}
+
+
+
+.fancy {
+	background-color: transparent;
+	border: 1px solid #595959;
+	border-radius: 7px;
+	box-sizing: border-box;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	float: right;
+	/*font-weight: 500;*/
+	letter-spacing: 0.05em;
+	margin: 0;
+	outline: none;
+	overflow: visible;
+	padding: 1.25em 2em;
+	position: relative;
+	text-align: center;
+	text-decoration: none;
+	text-transform: none;
+	transition: all 0.3s ease-in-out;
+	user-select: none;
+	font-size: 16px;
+	font-family: inherit;
+}
+
+.fancy::before {
+	content: " ";
+	width: 1.5625rem;
+	height: 2px;
+	background: #595959;
+	top: 50%;
+	left: 1.5em;
+	position: absolute;
+	transform: translateY(-50%);
+	transform-origin: center;
+	transition: background 0.3s linear, width 0.3s linear;
+}
+
+.fancy .text {
+	font-size: 1em;
+	line-height: 0;
+	padding-left: 2em;
+	display: block;
+	text-align: left;
+	transition: all 0.3s ease-in-out;
+	/*text-transform: uppercase;*/
+	text-decoration: none;
+	color: black;
+}
+
+.fancy .top-key {
+	height: 2px;
+	width: 1.5625rem;
+	top: -2px;
+	left: 0.625rem;
+	position: absolute;
+	background: whitesmoke;
+	transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+	height: 2px;
+	width: 1.5625rem;
+	right: 1.875rem;
+	bottom: -2px;
+	position: absolute;
+	background: whitesmoke;
+	transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+	height: 2px;
+	width: 0.625rem;
+	right: 0.625rem;
+	bottom: -2px;
+	position: absolute;
+	background: whitesmoke;
+	transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+	color: white;
+	/*background: #595959;*/
+}
+
+.fancy:hover::before {
+	width: 0.9375rem;
+	background: #595959;
+}
+
+.fancy:hover .text {
+	color: black;
+	padding-left: 1.5em;
+}
+
+.fancy:hover .top-key {
+	left: -2px;
+	width: 0;
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
+	right: 0;
+	width: 0;
+}
+
+
+
+
+
+/* Note that you only needs to edit the config to customize the button! */
+a {
+	color: black;
+	text-decoration: none;
+}
+
+
+
+

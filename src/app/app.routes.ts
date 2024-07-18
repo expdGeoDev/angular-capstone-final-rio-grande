@@ -1,7 +1,8 @@
 import {AddUpdateFormComponent} from "./add-update-form/add-update-form.component";
 import {CoffeeHttpService} from "./coffee-http.service";
 import {Ng2StateDeclaration, Transition} from "@uirouter/angular";
-import {AddCoffeeButtonComponent} from "./add-coffee-button/add-coffee-button.component";
+import { ListComponent } from './list/list.component';
+import { PopupComponent } from './popup/popup.component';
 
 export const routerStates = [
 	{
@@ -21,5 +22,18 @@ export const routerStates = [
 				resolveFn: (trans: Transition) => trans.params()['coffeeId']
 			}
 		]
+	},
+	{
+		name: 'app-coffeelist',
+		url: '/coffees',
+		component: ListComponent,
+		label: 'List of Coffees',
+	},
+
+	{
+		name: 'app-popup',
+		url: '/popup',
+		component: PopupComponent,
+		label: 'Pop up Modal',
 	}
 ]

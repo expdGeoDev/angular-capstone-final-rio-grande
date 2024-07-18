@@ -14,7 +14,7 @@ export const routerStates = [
 	},
   {
 
-    
+
 		name: 'add-update-form',
 		url: '/add-update-form',
 		component: AddUpdateFormComponent,
@@ -37,6 +37,19 @@ export const routerStates = [
 		url: '/coffees',
 		component: ListComponent,
 		label: 'List of Coffees',
+		params: {
+			successMessage: {
+				type: 'any',
+				value: ''
+			}
+		},
+		resolve: [
+			{
+				token: "successMessage",
+				deps: [Transition],
+				resolveFn: (trans: Transition) => trans.params()['successMessage']
+			}
+		]
 	},
 
 	{

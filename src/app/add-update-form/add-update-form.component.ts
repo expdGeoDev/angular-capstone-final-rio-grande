@@ -3,12 +3,13 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {RoastType, FormatType, Coffee} from "../../data/coffee-data";
 import {CoffeeHttpService} from "../coffee-http.service";
 import {lastValueFrom, tap} from "rxjs";
+import {UIRouterModule} from "@uirouter/angular";
 
 
 @Component({
 	selector: 'add-update-form',
 	standalone: true,
-	imports: [ReactiveFormsModule],
+	imports: [ReactiveFormsModule, UIRouterModule],
 	templateUrl: './add-update-form.component.html',
 	styleUrl: './add-update-form.component.css'
 })

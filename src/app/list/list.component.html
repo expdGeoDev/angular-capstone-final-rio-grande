@@ -67,8 +67,8 @@
 <!--						<h5 (click)="clickInfo(item.id)">{{item.roaster}}</h5>		-->
 						<h5 >{{item.roaster}}</h5>
 						<div style="text-transform: capitalize;">{{ item.format }}</div>
-						<div style="text-transform: capitalize;">{{ item.active }}</div>
-						<div>{{ item.id }} Oz.</div>
+						<div style="text-transform: capitalize;">{{ item.roast }}</div>
+						<div>{{ item.size }} Oz.</div>
 						<div style="display: flex; justify-content: space-between; align-items: center; flex-direction:row; border-top: 1px solid black; margin-top: 10px;" >
 							<button style="margin-top:15px;">
 							  <a id="edit-coffee-button" uiSref="add-update-form" [uiParams]="{ coffeeId: item.id}">Edit</a>

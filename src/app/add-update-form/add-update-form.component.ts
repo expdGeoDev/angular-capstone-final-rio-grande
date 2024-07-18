@@ -104,8 +104,19 @@ export class AddUpdateFormComponent {
 			}
 		}
 
-		// TODO: display success response and/or redirect to index page
-		this.isEditForm() ? this.coffeeHTTPService.updateCoffee(this.coffee) :
-			this.coffeeHTTPService.createCoffee(this.coffee);
+		this.isEditForm() ? this.coffeeHTTPService.updateCoffee(this.coffee).subscribe({
+			next: (response) => {
+				if (response.status > 200 && response.status < 300) {
+					console.log('success')
+				}
+			}
+		}) :
+			this.coffeeHTTPService.createCoffee(this.coffee).subscribe({
+				next: (response) => {
+					if (response.status > 200 && response.status < 300) {
+						console.log('success')
+					}
+				}
+			});
 	}
 }

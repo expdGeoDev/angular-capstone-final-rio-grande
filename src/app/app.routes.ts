@@ -5,11 +5,6 @@ import {AddCoffeeButtonComponent} from "./add-coffee-button/add-coffee-button.co
 
 export const routerStates = [
 	{
-		name: 'add-coffee-button',
-		url: "/add",
-		component: AddCoffeeButtonComponent,
-	},
-	{
 		name: 'add-update-form',
 		url: '/add-update-form',
 		component: AddUpdateFormComponent,

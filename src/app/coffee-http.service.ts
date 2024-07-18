@@ -22,28 +22,19 @@ export class CoffeeHttpService {
 		return this.client.get<Coffee[]>(`${this.baseUrl}/coffee?roaster_like=${search}|roast_like=${search}|variety_like=${search}|format_like=${search}|tastingNotes_like=${search}`);
 	}
 
-	createCoffee(coffee: Coffee) {
-		console.log('creating', JSON.stringify(coffee));
-		this.client.post(
+	createCoffee(coffee: Coffee):Observable<any> {
+		return this.client.post(
 			`${this.baseUrl}/coffees`,
 			JSON.stringify(coffee),
-			{headers: {'Content-Type': 'application/json'}}
-		).subscribe({
-			next: (data) => {
-				console.log(data);
-			}
-		});
+			{headers: {'Content-Type': 'application/json'}, observe: 'response'}
+		)
 	}
 
-	updateCoffee(coffee: Coffee) {
-		this.client.put(
+	updateCoffee(coffee: Coffee):Observable<any> {
+		return this.client.put(
 			`${this.baseUrl}/coffees/${coffee.id}`,
 			JSON.stringify(coffee),
-			{headers: {'Content-Type': 'application/json'}}
-		).subscribe({
-			next: (data) => {
-				console.log(data);
-			}
-		});
+			{headers: {'Content-Type': 'application/json'}, observe: 'response'}
+		);
 	}
 }

@@ -5,7 +5,7 @@ import { HeaderComponent } from '../header/header.component';
 
 
 import { ApiService } from '../services/api.service';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PopupComponent} from '../popup/popup.component';
@@ -27,6 +27,7 @@ import { Observable } from 'rxjs';
 		FormsModule,
 		PopupComponent,
 		SearchBarComponent,
+		NgIf,
 	],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
@@ -54,9 +55,7 @@ export class ListComponent implements OnInit {
 	}
 
 	onSearch(searchResult: Observable<any>) {
-		console.log('search test');
 		searchResult.subscribe(response => {
-			console.log(response);
 			this.coffee = response;
 			this.count = this.coffee.length;
    		});

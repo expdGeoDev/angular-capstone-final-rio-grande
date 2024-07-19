@@ -1,17 +1,20 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { EventEmitter } from '@angular/core';
 // import { Coffee } from '../interface/coffee';
 // import { Coffee } from '../../data/coffee'
-
+import { StateService } from '@uirouter/angular';
 import { ApiService } from '../services/api.service';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PopupComponent} from '../popup/popup.component';
 import { CoffeeHttpService } from '../coffee-http.service';
 import { Coffee } from '../../data/coffee-data';
 import { AppComponent } from '../app.component';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { Observable } from 'rxjs';
+import {UIRouterModule} from "@uirouter/angular";
 
 // import { RouterModule, Routes } from '@angular/router';
 // import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -25,6 +28,9 @@ import { AppComponent } from '../app.component';
 		NgForOf,
 		FormsModule,
 		PopupComponent,
+		SearchBarComponent,
+		NgIf,
+		UIRouterModule,
 	],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
@@ -40,16 +46,34 @@ export class ListComponent implements OnInit {
 	deleteMessage		: boolean = false;
 	sortingOptions	: string[] = ['Brand (A-Z)', 'Brand (Z-A)'];
 
-	constructor(private apiService:ApiService, private http: HttpClient, private httpService: CoffeeHttpService) { }
+  constructor(private apiService:ApiService, private http: HttpClient, private httpService: CoffeeHttpService, private stateService: StateService) { }
 
+	@Input() successMessage: String = '';
+	
 	ngOnInit(): void {
 		this.apiService.coffee().subscribe(response => {
 			this.coffee = response;
 			this.coffee  = this.coffee.filter(o => o.active);
 			this.coffeeCount = this.coffee.length;
 		});
+
 		this.toDeleteID = 0;
 		this.confirmDelete = false;
+
+		if(this.successMessage) {
+			let alert = document.getElementById('top-alert')
+			if(alert) (alert as HTMLFormElement).classList.add('show')
+			setTimeout(function() {
+				if(alert) (alert as HTMLFormElement).classList.remove('show')
+			}, 3000);
+		}
+	}
+
+	onSearch(searchResult: Observable<any>) {
+		searchResult.subscribe(response => {
+			this.coffee = response;
+			this.count = this.coffee.length;
+   		});
 	}
 
 	//Sort brand name based on user selection
@@ -85,6 +109,7 @@ export class ListComponent implements OnInit {
 			this.toDeleteID = 0;
 		}
 	}
+
 
 	//Delete coffee item from list if confirmDelete flag is 'true'; set 'Active' = false
 	deleteCoffee () {

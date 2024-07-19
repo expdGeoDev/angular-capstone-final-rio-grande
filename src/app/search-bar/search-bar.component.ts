@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Coffee} from '../../data/coffee-data';
 import { CoffeeHttpService } from '../coffee-http.service';
 import { Observable } from 'rxjs';
@@ -14,13 +14,13 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './search-bar.component.css'
 })
 export class SearchBarComponent {
-	@Output()
-	searchResult: Observable<Coffee[]> | undefined;
+	@Output() searchEvent = new EventEmitter<Observable<any>>();
+
 	searchString = '';
 
 	constructor(private coffeeHTTPService: CoffeeHttpService){}
 
 	onSubmit(){
-		this.searchResult =  this.coffeeHTTPService.findBySearchString(this.searchString);
+		this.searchEvent.emit(this.coffeeHTTPService.findBySearchString(this.searchString));
 	};
 }

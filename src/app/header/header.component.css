@@ -24,4 +24,16 @@
 	/*font-family: Roboto, Arial, sans-serif;*/
 }
 
+.home-link {
+	position: absolute;
+	right: 0;
+	top: 25%;
+	margin-right: 25px;
+	z-index: 100;
+}
+.home-link > a {
+	color: #464545;
+	text-decoration: none;
+}
+
 

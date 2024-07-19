@@ -1,0 +1,22 @@
+.utilitybar {
+	margin-top: 45px;
+	height: 75px;
+	background-color: #ececec;
+	display: flex;
+	justify-content: space-between;
+}
+
+input {
+	display: block;
+	height: 55px;
+	width: 50vw;
+	padding: 0 1.25rem;
+	border: 0;
+	border-radius: 5px;
+}
+
+input,
+input::placeholder {
+	font: 1.25rem/3 sans-serif;
+	color: #9d9a9a;
+}

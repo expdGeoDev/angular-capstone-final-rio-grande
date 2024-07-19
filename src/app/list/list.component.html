@@ -1,103 +1,82 @@
-<!--<app-header></app-header>-->
-
-<!--<div style="display: flex; justify-content: center; align-items: center; margin-top: 45px; background-color: #9198e5;">-->
-
-<!--	<div>Filter DIV</div>-->
-
-<!--		<div class="flex-container" style="background-color: darksalmon">-->
-<!--			<div class="test" *ngFor="let item of coffee" >-->
-<!--				<div class="card">-->
-<!--					<div class="textBox" >-->
-<!--						<div class="textContent">-->
-<!--							<h5>{{item.roaster}}</h5>-->
-<!--							<div>{{ item.format }}</div>-->
-<!--							<div>{{ item.roast }}</div>-->
-<!--							<div>{{ item.size }} Oz.</div>-->
-<!--							<div>-->
-<!--								<button class="button">Edit</button>-->
-<!--							</div>-->
-<!--						</div>-->
-<!--					</div>-->
-<!--				</div>-->
-<!--			</div>-->
-<!--		</div>-->
-
-<!--</div>-->
+<div style="display: flex; justify-content: center; align-items: center; flex-direction:column; margin-top: 65px; background-color: transparent;">
 
 
-<div style="display: flex; justify-content: center; align-items: center; flex-direction:column; margin-top: 65px; background-color: whitesmoke;">
-
-	<div style="width: 50%; height: 65px; display: flex; justify-content: space-between; align-items: center;background-color: transparent;">
-		<div style="margin: auto 0;">
-			<div class="search">
-				<input type="text" class="search__input" placeholder="Search">
-				<button class="search__button">
-					<svg class="search__icon" aria-hidden="true" viewBox="0 0 24 29">
-						<g>
-							<path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
-						</g>
-					</svg>
-				</button>
-			</div>
-		</div>
-
-		<div>
-<!--			<a class="fancy" href="#" style="transform: scale(0.8);">-->
-<!--				<span class="top-key"></span>-->
-<!--				<span class="text">Add New</span>-->
-<!--				<span class="bottom-key-1"></span>-->
-<!--				<span class="bottom-key-2"></span>-->
-<!--			</a>-->
-		</div>
-
-		<div>{{count}}</div>
-
-		<div style="margin: auto 0;">
-			<div style="display: flex; justify-content: space-between; align-items: center; flex-direction:row; width: 280px">
-				<button style="background-color: transparent; height: 35px; width: 135px; border-radius: 7px; border: 1px solid;"><a href="/add-update-form">New Coffee</a></button>
-				<div>
-					<select id="sort" [(ngModel)]="selectedOption" (change)="onSortChange()" style="background-color: transparent; height: 35px; width: 135px; border-radius: 7px">
-						<option value="" disabled selected>Sort By</option>
-						<option *ngFor="let item of sortingoptions" [ngValue]="item">
-							{{ item }}
-						</option>
-					</select>
+		<div class="align_row" style="width: 70%; height: 65px; ! important; background-color: transparent;">
+			<div style="margin: auto 0;">
+				<div class="align_row" style="width: 380px">
+					<div class="search">
+						<input type="text" class="search__input" placeholder="Search">
+						<button class="search__button">
+							<svg class="search__icon" aria-hidden="true" viewBox="0 0 24 29">
+								<g>
+									<path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+								</g>
+							</svg>
+						</button>
+					</div>
+					<div style="font-size: 16px; font-family: inherit">{{coffeeCount}} results</div>
 				</div>
 			</div>
-		</div>
 
-	</div>
+<!--			<div><button (click)="test()">test</button></div>-->
 
-	<div class="flex-container" style="background-color: whitesmoke;" >
-		<div class="test" *ngFor="let item of coffee" >
-			<div class="card">
-				<div class="textBox">
-					<div class="textContent" >
-<!--						<h5 (click)="clickInfo(item.id)">{{item.roaster}}</h5>		-->
-						<h5 >{{item.roaster}}</h5>
-						<div style="text-transform: capitalize;">{{ item.format }}</div>
-						<div style="text-transform: capitalize;">{{ item.active }}</div>
-						<div>{{ item.id }} Oz.</div>
-						<div style="display: flex; justify-content: space-between; align-items: center; flex-direction:row; border-top: 1px solid black; margin-top: 10px;" >
-							<button (click)="clickEdit(item.id)" 		style="margin-top:15px;"><a href="/coffees/{{item.id}}">Edit</a></button>
-							<button (click)="clickView(item.id)" 		style="margin-top:15px;"><a href="/coffees/{{item.id}}">View</a></button>
-							<button
-								(click)="clickDelete(item.id)"
-								style="margin-top: 15px; margin-right: 1px;"
-								>Delete
-							</button>
-						</div>
+			<div style="margin: auto 0;">
+				<div class="align_row" style="width: 250px">
+					<button style="background-color: transparent; height: 35px; width: 120px; border-radius: 5px; border: 1px solid;"><a href="/add-update-form">New Coffee</a></button>
+					<div>
+						<select id="sort" [(ngModel)]="selectedOption" (change)="onSortChange()" style="background-color: transparent; height: 35px; width: 120px; border-radius: 5px">
+							<option value="" disabled selected>Sort By</option>
+							<option *ngFor="let item of sortingOptions" [ngValue]="item">
+								{{ item }}
+							</option>
+						</select>
 					</div>
 				</div>
 			</div>
 		</div>
+
+	<div class="flex-container" style="background-color: transparent;" >
+		<div class="test" *ngFor="let item of coffee" style="background-color: transparent;" >
+			<div class="card" >
+				<div class="textBox" style="display: flex; justify-content: space-between; flex-direction:column; background-color: transparent;" [hidden] = "deleteMessage">
+
+						<div class="textContent1" style="background-color: transparent;">
+	<!--						<h5 (click)="clickInfo(item.id)">{{item.roaster}}</h5>		-->
+							<h5 >{{item.roaster}}</h5>
+							<div style="text-transform: capitalize;">{{ item.format }}</div>
+							<div style="text-transform: capitalize;">{{ item.roast }}</div>
+							<div>{{ item.size }} Oz.</div>
+							<div>ID: {{ item.id }}</div>
+						</div>
+
+						<div style="border-top: 1px solid black;"></div>
+
+						<div class="textContent2" style="background-color: transparent;">
+							<div class="align_row" >
+								<button (click)="clickEdit(item.id)" 		class="card_button"><a href="/coffees/{{item.id}}">Edit</a></button>
+								<button (click)="clickView(item.id)" 		class="card_button"><a href="/coffees/{{item.id}}">View</a></button>
+								<button
+									type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"
+									class="card_button"
+									(click)="itemToDelete(item.id)"
+								>Delete
+								</button>
+							</div>
+						</div>
+
+				</div>
+			</div>
+		</div>
 	</div>
+
 </div>
 
-<div><app-popup></app-popup></div>
+<div><app-popup (emitFlag)="getConfirmation($event)"></app-popup></div>
 
 
 
+
+<!--								(click)="clickDelete(item.id)"-->
 
 
 

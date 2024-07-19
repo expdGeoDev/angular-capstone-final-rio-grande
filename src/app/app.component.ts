@@ -13,8 +13,6 @@ import { ListComponent } from './list/list.component';
 	imports: [
 		UIRouterModule,
 		HeaderComponent,
-		UtilitybarComponent,
-		ListComponent,
 	],
 	styleUrl: './app.component.css',
 })

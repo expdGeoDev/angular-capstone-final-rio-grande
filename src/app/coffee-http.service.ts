@@ -18,8 +18,8 @@ export class CoffeeHttpService {
 		return this.client.get<Coffee>(`${this.baseUrl}/coffees/${id}`);
 	}
 
-	findBySearchString(search: string): Observable<Coffee[]> | undefined {
-		return this.client.get<Coffee[]>(`${this.baseUrl}/coffee?roaster_like=${search}|roast_like=${search}|variety_like=${search}|format_like=${search}|tastingNotes_like=${search}`);
+	findBySearchString(search: string): Observable<Coffee[]>{
+		return this.client.get<Coffee[]>(`${this.baseUrl}/coffees?q=${search}&attr=roaster_like,roast_like,variety_like,format_like,tastingNotes_like`);
 	}
 
 	createCoffee(coffee: Coffee):Observable<any> {

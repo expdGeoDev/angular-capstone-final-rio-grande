@@ -28,7 +28,7 @@
     },
     {
       "id": "4",
-      "active": true,
+      "active": false,
       "variety": null,
       "size": 14,
       "roast": "medium",
@@ -132,7 +132,7 @@
     },
     {
       "id": "12",
-      "active": true,
+      "active": false,
       "roaster": "Stumptown",
       "variety": null,
       "size": 8,
@@ -13161,6 +13161,66 @@
       "grind": 8,
       "origin": null,
       "singleOrigin": true,
+      "tastingNotes": null
+    },
+    {
+      "id": "0ffa4336-5f41-498d-bbbd-455e7560bd4d",
+      "active": true,
+      "roaster": "Sample Roaster",
+      "variety": "sample variety",
+      "size": 8,
+      "roast": "blonde",
+      "format": "k-pod",
+      "origin": null,
+      "singleOrigin": false,
+      "tastingNotes": null
+    },
+    {
+      "id": "3df59f94-0ff7-4515-a5cc-59a477f79251",
+      "active": true,
+      "roaster": "Sample Roaster 2",
+      "variety": null,
+      "size": 8,
+      "roast": "blonde",
+      "format": "k-pod",
+      "origin": null,
+      "singleOrigin": false,
+      "tastingNotes": null
+    },
+    {
+      "id": "9d45234c-6977-42e4-87c6-6dba433f6d02",
+      "active": true,
+      "roaster": "Sample Roaster 3",
+      "variety": null,
+      "size": 8,
+      "roast": "blonde",
+      "format": "k-pod",
+      "origin": null,
+      "singleOrigin": false,
+      "tastingNotes": null
+    },
+    {
+      "id": "c09727ca-aea4-4c5c-b3f3-fb1078fefc72",
+      "active": true,
+      "roaster": "Sample Roaster 4",
+      "variety": null,
+      "size": 8,
+      "roast": "blonde",
+      "format": "k-pod",
+      "origin": null,
+      "singleOrigin": false,
+      "tastingNotes": null
+    },
+    {
+      "id": "2f43a410-fd8d-41a7-9fb5-7ecb2b2b34b2",
+      "active": true,
+      "roaster": "Sample Roaster 5",
+      "variety": null,
+      "size": 8,
+      "roast": "blonde",
+      "format": "k-pod",
+      "origin": null,
+      "singleOrigin": false,
       "tastingNotes": null
     }
   ]

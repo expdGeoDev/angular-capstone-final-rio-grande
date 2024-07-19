@@ -1,5 +1,5 @@
 .details {
-    background-color: black;
+    background-color: rgb(255, 174, 145);
 }
 
 .container {
@@ -8,11 +8,11 @@
     height: max-content;
     justify-content: space-around;
     background-size: auto;
-    padding: 20px;
+    padding: 150px;
 }
 
 .card-block {
-    background-color: #f8e4c5af;
+    background-color: rgb(252, 194, 173);
     width: 100%;
 }
 
@@ -35,4 +35,10 @@ h3 {
     color: black;
     text-align: left;
     font-weight: bold;
+}
+
+
+#footer {
+    height: 100px;
+    background-color: rgb(245, 131, 90);
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 // import { Coffee } from '../interface/coffee';
 // import { Coffee } from '../../data/coffee'
@@ -36,7 +36,7 @@ import {UIRouterModule} from "@uirouter/angular";
 })
 
 export class ListComponent implements OnInit {
-
+	@Input() successMessage: String = '';
 	stage: Coffee []=[];
 	coffee: Coffee []=[];
 
@@ -56,6 +56,13 @@ export class ListComponent implements OnInit {
 			this.count = this.coffee.length;
 			// this.coffee = this.coffee.sort((a, b) => a.id> b.id? 1 : -1);
 		});
+		if(this.successMessage) {
+			let alert = document.getElementById('top-alert')
+			if(alert) (alert as HTMLFormElement).classList.add('show')
+			setTimeout(function() {
+				if(alert) (alert as HTMLFormElement).classList.remove('show')
+			}, 3000);
+		}
 	}
 
 	onSearch(searchResult: Observable<any>) {

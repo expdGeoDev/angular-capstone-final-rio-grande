@@ -3,12 +3,13 @@ import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {RoastType, FormatType, Coffee} from "../../data/coffee-data";
 import {CoffeeHttpService} from "../coffee-http.service";
 import {lastValueFrom, tap} from "rxjs";
+import {StateService, UIRouterModule} from "@uirouter/angular";
 
 
 @Component({
 	selector: 'add-update-form',
 	standalone: true,
-	imports: [ReactiveFormsModule],
+	imports: [ReactiveFormsModule, UIRouterModule],
 	templateUrl: './add-update-form.component.html',
 	styleUrl: './add-update-form.component.css'
 })
@@ -45,7 +46,10 @@ export class AddUpdateFormComponent {
 	})
 
 
-	constructor(private coffeeHTTPService: CoffeeHttpService){}
+	constructor(
+		private coffeeHTTPService: CoffeeHttpService,
+		private stateService: StateService
+	){}
 
 	isEditForm(): boolean {
 		return this.coffeeId != '0';
@@ -107,15 +111,19 @@ export class AddUpdateFormComponent {
 
 		this.isEditForm() ? this.coffeeHTTPService.updateCoffee(this.coffee).subscribe({
 			next: (response) => {
-				if (response.status > 200 && response.status < 300) {
-					console.log('success')
+				if (response.status >= 200 && response.status < 300) {
+					this.stateService.go(
+						'app-coffeelist',
+						{successMessage: `Successfully edited a coffee from ${this.coffee.roaster}!`});
 				}
 			}
 		}) :
 			this.coffeeHTTPService.createCoffee(this.coffee).subscribe({
 				next: (response) => {
-					if (response.status > 200 && response.status < 300) {
-						console.log('success')
+					if (response.status >= 200 && response.status < 300) {
+						this.stateService.go(
+							'app-coffeelist',
+							{successMessage: `Successfully added a new coffee from ${this.coffee.roaster}!`});
 					}
 				}
 			});

@@ -22,3 +22,11 @@
 	padding: 5px;
 }
 
+button:hover {
+	background-color: darkgray;
+}
+
+a {
+	color: black;
+	text-decoration: none;
+}

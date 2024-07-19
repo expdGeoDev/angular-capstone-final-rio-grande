@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 // import { Coffee } from '../interface/coffee';
 // import { Coffee } from '../../data/coffee'
-
+import { StateService } from '@uirouter/angular';
 
 import { ApiService } from '../services/api.service';
 import { NgForOf, NgIf } from '@angular/common';
@@ -46,7 +46,9 @@ export class ListComponent implements OnInit {
 
 	sortingoptions: string[] = ['Brand (A-Z)', 'Brand (Z-A)'];
 
-	constructor(private apiService:ApiService, private http: HttpClient, private httpService: CoffeeHttpService) { }
+
+	constructor(private apiService:ApiService, private http: HttpClient, private httpService: CoffeeHttpService, private stateService: StateService) { }
+	
 	ngOnInit(): void {
 		this.apiService.coffee().subscribe(response => {
 			this.coffee = response;
@@ -82,6 +84,10 @@ export class ListComponent implements OnInit {
 
 	clickView(id : any) {
 	}
+
+	// viewCoffee(id: String) {
+	// 	this.stateService.go('app-details', {coffeeId: id})
+	// }
 
 	clickDelete(cid : any) {
 			console.log(cid);

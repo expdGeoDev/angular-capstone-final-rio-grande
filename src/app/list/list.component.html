@@ -73,7 +73,10 @@
 							<button style="margin-top:15px;">
 							  <a id="edit-coffee-button" uiSref="add-update-form" [uiParams]="{ coffeeId: item.id}">Edit</a>
 							</button>
-							<button (click)="clickView(item.id)" 		style="margin-top:15px;"><a href="/coffees/{{item.id}}">View</a></button>
+							<!-- <button (click)="clickView(item.id)" 		style="margin-top:15px;"><a href="/coffees/{{item.id}}">View</a></button> -->
+							<button style="margin-top:15px;">
+								<a id="view" uiSref="app-details" [uiParams]="{coffeeId: item.id}">View</a>
+							  </button>
 							<button
 								(click)="clickDelete(item.id)"
 								style="margin-top: 15px; margin-right: 1px;"
@@ -88,7 +91,6 @@
 </div>
 
 <div><app-popup></app-popup></div>
-
 
 
 

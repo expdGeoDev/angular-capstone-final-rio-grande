@@ -7,10 +7,23 @@ import { PopupComponent } from './popup/popup.component';
 
 export const routerStates = [
 		{
-		name: 'details',
+		name: 'app-details',
 		url: '/details',
 		component: DetailsComponent,
 		label: 'Details View',
+		params: {
+			coffeeId: {
+				type: 'any',
+				value: '0'
+			}
+		},
+		resolve: [
+			{
+				token: "coffeeId",
+				deps: [Transition, CoffeeHttpService],
+				resolveFn: (trans: Transition) => trans.params()['coffeeId']
+			}
+		]
 	},
   {
 

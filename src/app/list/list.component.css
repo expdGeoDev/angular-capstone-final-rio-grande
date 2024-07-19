@@ -1,21 +1,35 @@
+.align_row {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.align_column {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+
 .flex-container {
 	display: flex;
 	flex-wrap: wrap;
 	width: fit-content;
-	justify-content: center;
-	max-width: 50% ! important;
+	justify-content: space-between;
+	max-width: 70% ! important;
+	/*max-width: calc(100% - 550px) ! important;*/
 	/*margin-top: 75px;*/
 	/*background-color: DodgerBlue;*/
 }
 
 .flex-container > .test {
-	width: 250px;
-	height: 220px;
-	margin: 10px;
+	width: 225px;
+	height: 225px;
+	margin: 12px;
 	/*text-align: center;*/
 	/*line-height: 75px;*/
 	/*font-size: 30px;*/
-	/*background-color: red;*/
 }
 
 input {
@@ -24,10 +38,10 @@ input {
 	border: 0;
 }
 
-input,
-input::placeholder {
+input, input::placeholder {
 	font: 1.25rem/2 sans-serif;
-	color: #424242;
+	color: #a19f9f;
+	font-family: inherit;
 }
 
 /*.card {*/
@@ -48,21 +62,21 @@ input::placeholder {
 	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
-	background: rgba(217, 217, 217, 0.58);
-	border: 1px solid white;
-	/*box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);*/
+	background: whitesmoke;
+	border: 1px solid rgba(217, 217, 217, 0.58);
+	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.22);
 	backdrop-filter: blur(6px);
-	border-radius: 17px;
-	/*text-align: center;*/
+	border-radius: 5px;
 	cursor: pointer;
+	padding: 10px;
+	user-select: none;
+	color: black;
+	/*text-align: center;*/
 	/*transition: all 0.5s;*/
 	/*display: flex;*/
 	/*align-items: center;*/
 	/*justify-content: center;*/
 	/*font-weight: bolder;*/
-	padding: 7px;
-	user-select: none;
-	color: black;
 }
 
 .card:hover {
@@ -75,12 +89,13 @@ input::placeholder {
 /*}*/
 
 .textBox {
-	width: calc(100% - 5px);
-	margin-left: 5px;
-	margin-top: 5px;
+	/*width: calc(100% - 5px);*/
+	/*margin-left: 5px;*/
+	/*margin-top: 5px;*/
+	height: 220px;
 }
 
-.textContent {
+.textContent1 {
 	display: flex;
 	flex-wrap: wrap;
 	flex-direction: column;
@@ -88,33 +103,74 @@ input::placeholder {
 	/*justify-content: center;*/
 }
 
+.textContent2 {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	/*align-items: center;*/
+	/*justify-content: center;*/
+}
 
-.button {
-	width: 50px;
-	height: 50px;
-	position: relative;
+.card_button {
+	/*margin-top:15px;*/
+	border-radius: 5px;
+	font-size: 14px;
+	width: 60px;
+	height: 30px;
+	border: 1px solid;
+}
+
+.card_button:hover {
+	background-color: rgb(215, 213, 213);
+}
+
+.search {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	background-color: rgb(44, 44, 44);
-	border-radius: 50%;
-	cursor: pointer;
-	transition-duration: .3s;
-	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.13);
+	justify-content: space-between;
+	text-align: center;
+	width: 250px;
+	border-bottom: 1px solid;
+}
+
+.search__input {
+	font-family: inherit;
+	font-size: inherit;
+	background-color: transparent;
 	border: none;
-	background-color: whitesmoke;
+	color: #646464;
+	padding: 0.7rem 1rem;
+	border-radius: 0;
+	width: 12em;
+	transition: all ease-in-out .5s;
+	margin-right: -2rem;
 }
 
-.button:hover {
-	background-color: rgb(56, 56, 56);
+.search__input:focus {
+	outline: none;
+	/*background-color: #f0eeee;*/
 }
 
-.button:hover .bell {
-	animation: bellRing 0.9s both;
+.search__input::-webkit-input-placeholder {
+	font-family: inherit;
+	font-weight: 100;
+	color: #9b9a9a;
 }
 
-.button:active {
-	transform: scale(0.8);
+.search__button {
+	border: none;
+	background-color: transparent;
+	margin-top: .1em;
+}
+
+.search__button:hover {
+	cursor: pointer;
+}
+
+.search__icon {
+	height: 1.3em;
+	width: 1.3em;
+	fill: #9d9d9d;
 }
 
 .fancy {
@@ -222,9 +278,6 @@ input::placeholder {
 	right: 0;
 	width: 0;
 }
-
-
-
 
 
 /* Note that you only needs to edit the config to customize the button! */

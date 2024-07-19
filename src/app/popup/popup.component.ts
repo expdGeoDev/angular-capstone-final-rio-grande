@@ -1,22 +1,26 @@
 import { Component, ElementRef, Output, ViewChild } from '@angular/core';
 import { EventEmitter } from '@angular/core';
+import { Coffee } from '../../data/coffee-data';
+
+
 @Component({
   selector: 'app-popup',
   standalone: true,
-  imports: [],
+	imports: [
+	],
   templateUrl: './popup.component.html',
   styleUrl: './popup.component.css'
 })
 
 export class PopupComponent {
 
-	deleteFlag : boolean = false;
+	deleteCoffee 	: boolean = false;
+
 	@Output() emitFlag = new EventEmitter <boolean> ();
 
-	clickDelete() {
-		this.deleteFlag = true;
-		console.log(this.deleteFlag);
-		this.emitFlag.emit(this.deleteFlag);
+	userConfirm() {
+		this.deleteCoffee = true;
+		this.emitFlag.emit(this.deleteCoffee);
 	}
 
 }

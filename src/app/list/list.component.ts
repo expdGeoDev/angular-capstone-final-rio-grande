@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import { EventEmitter } from '@angular/core';
 // import { Coffee } from '../interface/coffee';
 // import { Coffee } from '../../data/coffee'
 import { StateService } from '@uirouter/angular';
-
 import { ApiService } from '../services/api.service';
 import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -12,12 +13,8 @@ import { PopupComponent} from '../popup/popup.component';
 import { CoffeeHttpService } from '../coffee-http.service';
 import { Coffee } from '../../data/coffee-data';
 import { SearchBarComponent } from '../search-bar/search-bar.component';
-import { Observable } from 'rxjs';
 import {UIRouterModule} from "@uirouter/angular";
-
-// import { RouterModule, Routes } from '@angular/router';
-// import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-coffeelist',
@@ -32,30 +29,33 @@ import {UIRouterModule} from "@uirouter/angular";
 		UIRouterModule,
 	],
   templateUrl: './list.component.html',
-  styleUrl: './list.component.css'
+  styleUrl: './list.component.css',
 })
 
 export class ListComponent implements OnInit {
+
 	@Input() successMessage: String = '';
-	stage: Coffee []=[];
-	coffee: Coffee []=[];
 
-	selectedOption : string = '';
-	count: any;
-	delFlag : boolean = true;
-
-	sortingoptions: string[] = ['Brand (A-Z)', 'Brand (Z-A)'];
-
+	coffee					: Coffee []=[];
+	coffeeCount			: any;
+	selectedOption 	: string = '';
+	toDeleteID			: any = 0;
+	confirmDelete 	: boolean = false;
+	deleteMessage		: boolean = false;
+	sortingOptions	: string[] = ['Brand (A-Z)', 'Brand (Z-A)'];
 
 	constructor(private apiService:ApiService, private http: HttpClient, private httpService: CoffeeHttpService, private stateService: StateService) { }
-	
+
 	ngOnInit(): void {
 		this.apiService.coffee().subscribe(response => {
 			this.coffee = response;
-			// this.coffee  = this.coffee.filter(o => o.active);
-			this.count = this.coffee.length;
-			// this.coffee = this.coffee.sort((a, b) => a.id> b.id? 1 : -1);
+			this.coffee  = this.coffee.filter(o => o.active);
+			this.coffeeCount = this.coffee.length;
 		});
+
+		this.toDeleteID = 0;
+		this.confirmDelete = false;
+
 		if(this.successMessage) {
 			let alert = document.getElementById('top-alert')
 			if(alert) (alert as HTMLFormElement).classList.add('show')
@@ -68,14 +68,14 @@ export class ListComponent implements OnInit {
 	onSearch(searchResult: Observable<any>) {
 		searchResult.subscribe(response => {
 			this.coffee = response;
-			this.count = this.coffee.length;
+			this.coffeeCount = this.coffee.length;
    		});
 	}
 
+	//Sort brand name based on user selection
 	onSortChange() {
 		let colname = '';
 		let sortype = '';
-
 		if (this.selectedOption == 'Brand (A-Z)') {
 			colname = 'roaster';
 			sortype = 'asc'
@@ -89,30 +89,40 @@ export class ListComponent implements OnInit {
 		});
 	}
 
-	clickView(id : any) {
+	//Capture object ID when user clicks Delete button
+	itemToDelete(cid : any) {
+		this.toDeleteID = cid;
+		console.log(this.toDeleteID)
 	}
 
-	// viewCoffee(id: String) {
-	// 	this.stateService.go('app-details', {coffeeId: id})
-	// }
-
-	clickDelete(cid : any) {
-			console.log(cid);
-			const todelete = this.coffee.filter(obj => obj.id == cid)[0];
-			todelete.active = false;
-			console.log(todelete);
-			this.httpService.updateCoffee(todelete).subscribe(response => {
-				console.log(response.status);
-				// setTimeout(() => window.location.reload(), 1000);
-			});
-
+	//Get user confirmation through pop up modal
+	getConfirmation(deleteFlag : boolean) {
+		this.confirmDelete = deleteFlag;
+		console.log(this.confirmDelete)
+		if (this.confirmDelete && this.toDeleteID != 0) {
+			this.deleteCoffee();
+			this.confirmDelete = false;
+			this.toDeleteID = 0;
+		}
 	}
 
-	getdeleteflag(deleteFlag : boolean) {
-		this.delFlag = deleteFlag;
+	//Delete coffee item from list if confirmDelete flag is 'true'; set 'Active' = false
+	deleteCoffee () {
+		const toDelete = this.coffee.filter( obj => obj.id == this.toDeleteID)[0];
+		toDelete.active = false;
+		this.httpService.updateCoffee(toDelete).subscribe(response => {
+			console.log(response.status);
+		});
+		setTimeout(() => window.location.reload(), 1000);
 	}
 
+	clickView(id : any) {}
+	clickEdit(id : any) {}
 
+	test () {
+		this.deleteMessage    = true;
+		setTimeout(() => (this.deleteMessage = false),2000);
+	}
 }
 
 
@@ -134,3 +144,6 @@ export class ListComponent implements OnInit {
 // 	singleOrigin: todelete[0].singleOrigin,
 // 	tastingNotes: todelete[0].tastingNotes,
 // }
+
+
+// sort - this.coffee = this.coffee.sort((a, b) => a.id> b.id? 1 : -1);

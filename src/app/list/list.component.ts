@@ -5,12 +5,14 @@ import { HeaderComponent } from '../header/header.component';
 
 
 import { ApiService } from '../services/api.service';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { PopupComponent} from '../popup/popup.component';
 import { CoffeeHttpService } from '../coffee-http.service';
 import { Coffee } from '../../data/coffee-data';
+import { SearchBarComponent } from '../search-bar/search-bar.component';
+import { Observable } from 'rxjs';
 import {UIRouterModule} from "@uirouter/angular";
 
 // import { RouterModule, Routes } from '@angular/router';
@@ -25,6 +27,8 @@ import {UIRouterModule} from "@uirouter/angular";
 		NgForOf,
 		FormsModule,
 		PopupComponent,
+		SearchBarComponent,
+		NgIf,
 		UIRouterModule,
 	],
   templateUrl: './list.component.html',
@@ -50,6 +54,13 @@ export class ListComponent implements OnInit {
 			this.count = this.coffee.length;
 			// this.coffee = this.coffee.sort((a, b) => a.id> b.id? 1 : -1);
 		});
+	}
+
+	onSearch(searchResult: Observable<any>) {
+		searchResult.subscribe(response => {
+			this.coffee = response;
+			this.count = this.coffee.length;
+   		});
 	}
 
 	onSortChange() {
